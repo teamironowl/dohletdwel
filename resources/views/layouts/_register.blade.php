@@ -1,14 +1,10 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+<!-- topup model to confirm email address -->
+<div class="modal fade shadow" id="registerForm" tabindex="-1" role="dialog" aria-labelledby="registerFormLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content card">
+            <div class="modal-header cart-header"> {{ __('Register') }} </div>
+            <div class="modal-body card-body">
+            <form method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -61,9 +57,7 @@
                             </div>
                         </div>
                     </form>
-                </div>
             </div>
         </div>
     </div>
 </div>
-@endsection
