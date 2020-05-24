@@ -23,33 +23,17 @@
     </div>
     <div class="container m-auto pt-4">
         <div class="row mt-12">
+            @foreach($divisions ?? [] as $division)
             <div class="col-lg-4 col-md-12 col-sm-12 mb-5 text-center">
                 <div class="card rounded contact-card">
-                    <div class="card-header">Yangon</div>
+                    <div class="card-header primary-text-color"><h5>{{$division->name}}</h5></div>
                     <div class="card-body m-3">
                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum aut, numquam accusantium a asperiores earum veritatis excepturi sunt, vel, eligendi velit temporibus! Quo modi dolor ullam optio animi sapiente sit.</p>
                         <button class="btn btn-sm btn-success">More</button>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-5 text-center">
-                <div class="card rounded contact-card">
-                    <div class="card-header">Mandalay</div>
-                    <div class="card-body m-3">
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum aut, numquam accusantium a asperiores earum veritatis excepturi sunt, vel, eligendi velit temporibus! Quo modi dolor ullam optio animi sapiente sit.</p>
-                        <button class="btn btn-sm btn-success">More</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-5 text-center">
-                <div class="card rounded contact-card">
-                    <div class="card-header">Shan</div>
-                    <div class="card-body m-3">
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum aut, numquam accusantium a asperiores earum veritatis excepturi sunt, vel, eligendi velit temporibus! Quo modi dolor ullam optio animi sapiente sit.</p>
-                        <button class="btn btn-sm btn-success">More</button>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 

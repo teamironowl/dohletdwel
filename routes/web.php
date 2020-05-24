@@ -11,11 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome')->with([
-        'divisions' => \App\StateDivision::all()
-    ]);
-});
+Route::get('/', 'MainPageController@index');
 
 Auth::routes();
 
