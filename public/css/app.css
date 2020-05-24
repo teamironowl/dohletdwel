@@ -10933,3 +10933,32 @@ a.text-dark:focus {
   }
 }
 
+body {
+  background: url(/images/body-bg.png?12104a00b998ab058b6dbec0580411c6);
+}
+
+.primary-background-color {
+  background: linear-gradient(90deg, #254e55, #356e79);
+}
+
+.primary-text-color {
+  color: #3e828e;
+}
+
+a:hover,
+a:focus {
+  color: #b8dae0 !important;
+}
+
+.secondary-background-color {
+  background: linear-gradient(90deg, #192b2e, #2b4a50);
+}
+
+.secondary-text-color {
+  color: #3e828e;
+}
+
+.dropdown-menu > a:hover {
+  background: linear-gradient(90deg, #121f21, #20383c) !important;
+}
+

@@ -21,8 +21,8 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-md navbar-light primary-background-color shadow-sm">
+            <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{ url('/logo.jpg')}}" alt="Logo" width="50px">
                 </a>
@@ -32,38 +32,40 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto navbar-brand">
-                        <li>တို့လက်တွဲ</li>
+                    <ul class="navbar-nav mr-auto navbar-brand text-white">
+                        <li>တို့လက်တွဲ | @yield('title')</li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('မြေပုံ') }}</a>
+                                <a class="nav-link text-white" href="{{ route('map') }}">{{ __('မြေပုံ') }}</a>
                             </li>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="#" onclick="$('#loginForm').modal('show')">{{ __('လောဂ့်အင်') }}</a>
+                                <span class="nav-link text-white" onclick="$('#loginForm').modal('show')" style="cursor:pointer">
+                                    {{ __('လောဂ့်အင်') }}
+                                </span>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#" onclick="$('#registerForm').modal('show')">{{ __('အကောင့်ဖွင့်ရန်') }}</a>
+                                    <span class="nav-link text-white" onclick="$('#registerForm').modal('show')" style="cursor:pointer">{{ __('အကောင့်ဖွင့်ရန်') }}</span>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link text-white dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                <div class="dropdown-menu secondary-background-color dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item text-white" href="{{ route('home') }}">သင်၏စာမျက်နှာ</a>
+                                    <a class="dropdown-item text-white" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('လောဂ့်အောက်') }}
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
@@ -75,13 +77,17 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
     </div>
+    <footer class="primary-background-color text-white text-center p-4">
+        <p class="mt-2 mb-2">make with love by Team IO</p>
+    </footer>
     @guest
         @include('layouts._login')
         @include('layouts._register')
     @endguest
+        @include('layouts._report_from')
 </body>
 </html>

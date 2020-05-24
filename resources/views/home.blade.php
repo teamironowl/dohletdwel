@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'သင်၏စာမျက်နှာ')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -13,8 +13,30 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($report_cases as $report_case)
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            @empty
+                                <tr class="text-center"> 
+                                    <td colspan="5">no data!</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

@@ -12,13 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome')->with([
+        'divisions' => \App\StateDivision::all()
+    ]);
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+Route::get('/map', 'MapController@index')->name('map');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('/reportForm', 'ReportFormController');
+
+Route::group(['prefix' => 'ajax'], function (){
+    Route::get('state_division/{id}/townships', 'StateDivisionController@getAjax');
+});

@@ -6,3 +6,43 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+body {
+    background: url('body-bg.png')
+}
+
+.primary-background-color {
+    background: linear-gradient(
+        90deg,
+        hsl(189, 39%, 24%),
+        hsl(189, 39%, 34%),
+    );
+}
+
+.primary-text-color {
+    color: hsl(189, 39%, 40%);
+}
+
+a:hover, a:focus {
+    color: hsl(189, 39%, 80%)!important;
+}
+
+.secondary-background-color {
+    background: linear-gradient(
+        90deg,
+        hsl(189, 30%, 14%),
+        hsl(189, 30%, 24%),
+    );
+}
+
+.secondary-text-color {
+    color: hsl(189, 39%, 40%);
+}
+
+.dropdown-menu >  a:hover {
+    background: linear-gradient(
+        90deg,
+        hsl(189, 30%, 10%),
+        hsl(189, 30%, 18%),
+    ) !important;
+}
