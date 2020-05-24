@@ -3,9 +3,9 @@
 @section('title', 'ပင်မစာမျက်နှာ')
 @section('content')
     <div class="container-fluid card p-5">
-        <div class="container d-flex justify-content-around">
-            <div class="align-self-center">
-                <div class="d-flex p-4 flex-column" style="cursor:pointer" onclick="$('#reportForm').modal('show')">
+        <div class="d-flex justify-content-around flex-column flex-lg-row flex-md-row">
+            <div class="align-self-center order-1 order-lg-0 order-md-1 order-sm-1">
+                <div class="d-flex p-4 flex-lg-column flex-md-column flex-sm-row" style="cursor:pointer" onclick="$('#reportForm').modal('show')">
                     <img src="{{ url('/banner.png')}}" class="secondary-background-color align-self-center rounded-circle" alt="Banner Image" width="100px">
                     <button class="btn primary-text-color btn-lg mt-4">အကူအညီတောင်းရန်</button>
                 </div>
@@ -14,7 +14,7 @@
                 <img src="{{ url('/banner.png')}}" class="secondary-background-color rounded-circle" alt="Banner Image" width="200px">
             </div>
             <div class="align-self-center">
-                <div class="d-flex p-4 flex-column" style="cursor:pointer" onclick="$('#reportForm').modal('show')">  
+                <div class="d-flex p-4 flex-lg-column flex-md-column flex-sm-row" style="cursor:pointer" onclick="$('#reportForm').modal('show')">  
                     <img src="{{ url('/banner.png')}}" class="secondary-background-color align-self-center rounded-circle" alt="Banner Image" width="100px">
                     <button class="btn primary-text-color btn-lg mt-4">အကူအညီပေးရန်</button>
                 </div>
