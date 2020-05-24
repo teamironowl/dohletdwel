@@ -17,18 +17,26 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
+                                <th scope="col">တင်ပြသူ</th>
+                                <th scope="col">အကြောင်းအရာ</th>
+                                <th scope="col">လိုအပ်သည့်နေရာ</th>
+                                <th scope="col">ရက်စွဲ</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($report_cases as $report_case)
+                            @forelse($report_cases as $key => $report_case)
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                                <th scope="row">{{ $key + 1 }}</th>
+                                <td>{{ auth()->user()->name ?? 'တင်ပြသူမသိ'}}</td>
+                                <td>
+                                    <p><b>{{ $report_case->basic_need}}</b></p>
+                                    <p>{{ $report_case->description}}</p>
+                                    <p>{{ $report_case->affect_people}}ဦးအကူအညီလိုအပ်နေပါသည်။</p>
+                                    <p>ဆက်သွယ်ရန်ဖုန်း {{ $report_case->phone}}</p>
+                                    <p>တင်ပြသူ{{ $report_case->report_by}}</p>
+                                </td>
+                                <td>{{ $report_case->state_division_name}} {{ $report_case->township_name}}</td>
+                                <td>{{ $report_case->created_at->diffForHumans() }}</td>
                             </tr>
                             @empty
                                 <tr class="text-center"> 
