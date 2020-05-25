@@ -32,7 +32,7 @@ class ReportFormController extends Controller
 
         ReportForm::create($request);
 
-        return back()->with(['message' => 'လိုအပ်သည့်အကူအညီများတင်ပြပြီးဖြစ်ပါသည်။']);
+        return back()->with(['message' => 'လိုအပ်သည့်အကူအညီများအတည်ပြုရန်တင်ပြပြီးဖြစ်ပါသည်။']);
 
     }
 }
