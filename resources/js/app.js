@@ -13,3 +13,7 @@ require('./bootstrap');
  */
 
 require('./components/Example');
+
+// invoke sweet alert to app
+window.swal     = require('sweetalert2');
+// import Swal from 'sweetalert2'

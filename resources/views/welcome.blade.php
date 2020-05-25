@@ -45,7 +45,7 @@
             <div class="card rounded contact-card">
                 <div class="card-body m-3">
                     <a href="viber://pa?chatURI=are&context=abcdefg&text=Hello" class="text-decoration-none text-dark" target="_blank">
-                        <img src="{{ url('/viber.svg') }}" title="icon-viber- alt="icon-viber- class="wd-38">
+                        <img src="" title="icon-viber- alt="icon-viber- class="wd-38">
                         <h3 class="card-title mt-2 primary-text-color">Contact Us</h3>
                         <p class="card-text">@lang('chat_with_us')</p>
                     </a>
@@ -56,7 +56,7 @@
             <div class="card rounded contact-card">
                 <div class="card-body m-3">
                     <a href="https://m.me/ivemore/" class="text-decoration-none text-dark" target="_blank">
-                        <img src="{{ url('/messenger.svg') }}" title="icon-facebook-messenger- alt="icon-facebook-messenger- class="wd-38">
+                        <img src="" title="icon-facebook-messenger- alt="icon-facebook-messenger- class="wd-38">
                         <h3 class="card-title mt-2 primary-text-color">Facebook messenger</h3>
                         <p class="card-text">@lang('chat_with_us')</p>
                     </a>
@@ -67,7 +67,7 @@
             <div class="card rounded contact-card">
                 <div class="card-body m-3">
                     <a href="https://com.mm/contact/" class="text-decoration-none text-dark" target="_blank">
-                        <img src="{{ url('/contact.svg') }}" title="icon-hotline- alt="icon-hotline- class="wd-38">
+                        <img src="" title="icon-hotline- alt="icon-hotline- class="wd-38">
                         <h3 class="card-title mt-2 primary-text-color">Phone or Email</h3>
                         <p class="card-text">@lang('we_available')</p>
                     </a>
@@ -78,12 +78,6 @@
     </div>
 </div>
 </div>
-@if(Session::has('message'))
-    <div class="alert alert-success alert-dismissible col-4 ml-auto fixed-bottom">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong>အောင်မြင်သည်!</strong> {{ Session::get('message') }}
-    </div>
-@endif
 
 @if ($errors->any())
     <div class="alert alert-danger alert-dismissible col-4 ml-auto fixed-bottom">
@@ -107,11 +101,21 @@
                         })
                     })
                     .catch(error => console.error(error));
-                }
+            }
         });
 
         @if(session()->has('action_message') && session()->get('action_message') == 'openReportForm')
-            $('#reportForm').modal('show')
+            $('#reportForm').modal('show');
+        @endif
+
+        @if(Session::has('message'))
+            swal.fire({
+                type: "success",
+                icon: 'success',
+                title: 'အောင်မြင်သည်!',
+                text: '{{ Session::get('message') }}',
+                confirmButtonColor: "hsl(189, 39%, 40%)"
+            });
         @endif
     }
 </script>

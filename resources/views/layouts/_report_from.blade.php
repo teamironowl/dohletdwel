@@ -82,7 +82,7 @@
                             <label for="phone" class="col-md-4 col-form-label text-md-right">ဆက်သွယ်ရန်ဖုန်းနံပါတ်</label>
 
                             <div class="col-md-8">
-                                <input id="phone" placeholder="09XXXXXXXXX" type="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required>
+                                <input id="phone" placeholder="09XXXXXXXXX" type="tel" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required>
 
                                 @error('phone')
                                     <span class="invalid-feedback" role="alert">
