@@ -10,13 +10,16 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    static $ADMIN_ROLE = 1;
+    static $NORMAL_ROLE = 2;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'phone', 'password',
+        'name', 'phone', 'password', 'role_id'
     ];
 
     /**
@@ -36,4 +39,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function normalRole() {
+        return self::$NORMAL_ROLE;   
+    }
+
+    public function isAdmin()
+    {
+        return $this->role_id == self::$ADMIN_ROLE;
+    }
 }

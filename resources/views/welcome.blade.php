@@ -108,6 +108,10 @@
             $('#reportForm').modal('show');
         @endif
 
+        var action_message = /[?&]action_message(=([^&#]*)|&|#|$)/.exec(window.location.href);
+        
+        if (action_message && action_message[2] && action_message[2] == 'openLoginForm') $('#loginForm').modal('show');
+
         @if(Session::has('message'))
             swal.fire({
                 type: "success",

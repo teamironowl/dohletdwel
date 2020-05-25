@@ -22,6 +22,7 @@ class CreateReportFormsTable extends Migration
             $table->string('phone')->nullable();
             $table->string('report_by')->nullable();
             $table->unsignedInteger('owner_id')->nullable();
+            $table->unsignedInteger('status')->default(1);
             $table->string('description')->nullable();
             $table->timestamps();
         });

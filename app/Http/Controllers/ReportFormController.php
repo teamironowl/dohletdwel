@@ -25,7 +25,7 @@ class ReportFormController extends Controller
 
         if ($validator->fails())
         {
-            return back()->withErrors($validator)->with(['action_message' => 'openReportForm']);
+            return back()->withErrors($validator)->withInput()->with(['action_message' => 'openReportForm']);
         }
         
         $request['owner_id'] = auth()->id() ?? null;
