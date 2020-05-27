@@ -4,6 +4,7 @@ namespace App\GoogleDrive;
 
 use Google_Client; 
 use Google_Service_Drive;
+use Google_Service_Drive_DriveFile;
 
 class Push
 {
@@ -13,21 +14,21 @@ class Push
         $client = $this->getClient();
         $service = new Google_Service_Drive($client);
 
-        // Print the names and IDs for up to 10 files.
-        $optParams = array(
-        'pageSize' => 10,
-        'fields' => 'nextPageToken, files(id, name)'
-        );
-        $results = $service->files->listFiles($optParams);
+        //Insert a file
+        $file = new Google_Service_Drive_DriveFile();
+        $file->setName(uniqid().'.jpg');
+        $file->setDescription('A test document');
+        $file->setMimeType('image/jpeg');
 
-        if (count($results->getFiles()) == 0) {
-            print "No files found.\n";
-        } else {
-            print "Files:\n";
-            foreach ($results->getFiles() as $file) {
-                printf("%s (%s)\n", $file->getName(), $file->getId());
-            }
-        }
+        $data = file_get_contents(public_path('logo.jpg'));
+
+        $createdFile = $service->files->create($file, array(
+            'data' => $data,
+            'mimeType' => 'image/jpeg',
+            'uploadType' => 'multipart'
+            ));
+
+        print_r($createdFile);
     }
 
     function getClient()
@@ -43,7 +44,7 @@ class Push
         // The file token.json stores the user's access and refresh tokens, and is
         // created automatically when the authorization flow completes for the first
         // time.
-        $tokenPath = './credentials.json';
+        $tokenPath = app_path('GoogleDrive\token.json');
         if (file_exists($tokenPath)) {
             $accessToken = json_decode(file_get_contents($tokenPath), true);
             $client->setAccessToken($accessToken);
