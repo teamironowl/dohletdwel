@@ -46,3 +46,30 @@ a:hover, a:focus {
         hsl(189, 30%, 18%),
     ) !important;
 }
+
+.sidebar {
+    flex-shrink: 0;
+    background-color: hsl(189, 46%, 14%);
+    overflow-x: hidden;
+    &:not(.cover) {
+        width: 0; 
+        transition: width 0.4s ease-in;
+        &.open {
+            width: 250px;
+            transition: width 0.4s ease-out;
+        }
+    }
+    &.cover {
+        width: 250px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        margin-left: -250px;
+        transition: margin 0.4s ease-in;
+        &.open {
+            margin-left: 0;
+            transition: margin 0.4s ease-out;
+        }
+    }
+}
