@@ -10,6 +10,7 @@ class Push
 {
     public function toGoogleDrive()
     {
+        error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
         // Get the API client and construct the service object.
         $client = $this->getClient();
         $service = new Google_Service_Drive($client);
