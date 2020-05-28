@@ -9,6 +9,7 @@ class ReportForm extends Model
     static $STATUS_PENDING  = 1;
     static $STATUS_APPROVE  = 2;
     static $STATUS_CANCEL   = 3;
+    static $STATUS_CLOSED   = 4;
     
     protected $guarded = [];
 }

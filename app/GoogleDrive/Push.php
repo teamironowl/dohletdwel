@@ -36,7 +36,7 @@ class Push
     {
         $client = new Google_Client();
         $client->setApplicationName('Google Drive API PHP Quickstart');
-        $client->setScopes(Google_Service_Drive::DRIVE_METADATA_READONLY);
+        $client->setScopes(Google_Service_Drive::DRIVE);
         $client->setAuthConfig(app_path('GoogleDrive/credentials.json'));
         $client->setAccessType('offline');
         $client->setPrompt('select_account consent');
