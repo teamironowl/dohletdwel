@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-use App\reportForm;
+use App\ReportForm;
 
 class ReportFormService
 {
