@@ -8,6 +8,6 @@ class VolunteerFormService
 {
     public function get()
     {
-        return VolunteerForm::paginate(5);
+        return VolunteerForm::orderBy('created_at', 'desc')->paginate(5);
     }
 }

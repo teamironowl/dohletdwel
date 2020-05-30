@@ -23,7 +23,7 @@
     </div>
 
     <div class="container-fluid m-auto pt-4">
-        <h4 class="text-center primary-text-color pb-4"><b>ပြည်နယ်၊ တိုင်းအလိုက် အကူအညီလိုအပ်သည့်နေရာများ</b></h4>
+        <h4 class="text-center primary-text-color pb-4"><b>အကူအညီလိုအပ်သည့်နေရာများ (ပြည်နယ်နှင့် တိုင်းအလိုက်)</b></h4>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 @foreach($divisions->chunk(4) ?? [] as $count => $dc)
