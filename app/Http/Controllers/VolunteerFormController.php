@@ -5,9 +5,18 @@ namespace App\Http\Controllers;
 use App\VolunteerForm;
 use Illuminate\Http\Request;
 use Validator;
+use App\Service\VolunteerFormService;
 
 class VolunteerFormController extends Controller
 {
+
+    public function index()
+    {
+        $volunteers = (new VolunteerFormService)->get();
+
+        return view('volunteers.volunteer')->with('volunteers', $volunteers);
+    }
+
     public function store(Request $request)
     {
         $request = $request->all();

@@ -39,8 +39,11 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('map') }}">{{ __('မြေပုံ') }}</a>
-                            </li>
+                            <a class="nav-link text-white" href="{{ route('volunteers') }}">{{ __('စေတနာ့၀န်ထမ်းများ') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ route('map') }}">{{ __('မြေပုံ') }}</a>
+                        </li>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">

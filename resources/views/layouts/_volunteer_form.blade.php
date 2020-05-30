@@ -2,7 +2,7 @@
 <div class="modal fade shadow" id="volunteerForm" tabindex="-1" role="dialog" aria-labelledby="volunteerFormLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content card">
-            <div class="modal-header cart-header"> <b>အကူညီပေးနိုင်ရန် ဖြည့်ပါ</b> </div>
+            <div class="modal-header cart-header"> <b>Volunteer အဆိုပြုရန်</b> </div>
                 <div class="modal-body card-body">
                     <form method="POST" action="{{ route('volunteerForm.store') }}">
                         @csrf

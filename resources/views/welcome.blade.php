@@ -16,7 +16,7 @@
             <div class="align-self-center">
                 <div class="d-flex p-4 flex-lg-column flex-md-column flex-sm-row" style="cursor:pointer" onclick="$('#volunteerForm').modal('show')">  
                     <img src="{{ url('/banner.png')}}" class="secondary-background-color align-self-center rounded-circle" alt="Banner Image" width="100px">
-                    <button class="btn primary-text-color btn-lg mt-4">အကူအညီပေးရန်</button>
+                    <button class="btn primary-text-color btn-lg mt-4">Volunteer အဆိုပြုရန်</button>
                 </div>
             </div>
         </div>
