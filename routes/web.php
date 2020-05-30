@@ -19,6 +19,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/map', 'MapController@index')->name('map');
 
+Route::get('/state_or_division/{id}/cases', 'StateDivisionController@index');
+
 Route::resource('/reportForm', 'ReportFormController');
 
 Route::group(['prefix' => 'ajax'], function (){

@@ -11,7 +11,7 @@
                             <div class="col-md-8">
                                 <select id="state_division" name="state_division" class="custom-select">
                                     <option value="" selected disable>ပြည်နယ်/ တိုင်းကိုရွေးပါ</option>
-                                    @foreach($divisions ?? [] as $division)
+                                    @foreach($all_divisions ?? [] as $division)
                                     <option value="{{$division->id}}">{{$division->name}}</option>
                                     @endforeach
                                     <p class="text-danger">{{$errors->first('state_division')}}</p>

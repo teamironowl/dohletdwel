@@ -21,63 +21,87 @@
             </div>
         </div>
     </div>
-    <div class="container m-auto pt-4">
-        <div class="row mt-12">
-            @foreach($divisions ?? [] as $division)
-            <div class="col-lg-4 col-md-12 col-sm-12 mb-5 text-center">
-                <div class="card rounded contact-card">
-                    <div class="card-header primary-text-color"><h5>{{$division->name}}</h5></div>
-                    <div class="card-body m-3">
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum aut, numquam accusantium a asperiores earum veritatis excepturi sunt, vel, eligendi velit temporibus! Quo modi dolor ullam optio animi sapiente sit.</p>
-                        <button class="btn btn-sm btn-success">More</button>
+
+    <div class="container-fluid m-auto pt-4">
+        <h4 class="text-center primary-text-color pb-4"><b>ပြည်နယ်၊ တိုင်းအလိုက် အကူအညီလိုအပ်သည့်နေရာများ</b></h4>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                @foreach($divisions->chunk(4) ?? [] as $count => $dc)
+                <li data-target="#carouselExampleIndicators" data-slide-to="{{$count}}}" class="{{ $count == 0 ? 'active' : '' }}"></li>
+                @endforeach
+            </ol>
+            
+            <div class="carousel-inner">
+                @foreach($divisions->chunk(4) ?? [] as $count => $division_cats)
+                <div class="carousel-item {{ $count == 0 ? 'active' : '' }}">
+                    <div class="row mt-12">
+                        @foreach($division_cats ?? [] as $division)
+                        <div class="col-lg-3 col-md-3 col-sm-12 mb-5 text-center">
+                            <div class="card rounded contact-card">
+                                <div class="card-header secondary-background-color text-white"><h5>{{$division->name}}</h5></div>
+                                <div class="card-body m-3" style="background: url({{ url('logo.jpg')}}) no-repeat">
+                                    <div class="ml-5 pl-5">
+                                        <p class="ml-5"><b>{{ $division->cases}}</b> Case</p>
+                                        <a href="{{ url('/state_or_division').'/'.$division->id.'/cases'}}" class="btn btn-sm secondary-background-color text-white ml-5">အသေးစိပ်</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
                     </div>
                 </div>
+                @endforeach
             </div>
-            @endforeach
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
     </div>
 
     <div class="container mt-md-4">
-    <div class="cmn-sec">
-
-    <div class="row mt-4">
-        <div class="col-lg-4 col-md-12 col-sm-12 mb-5 text-center">
-            <div class="card rounded contact-card">
-                <div class="card-body m-3">
-                    <a href="viber://pa?chatURI=are&context=abcdefg&text=Hello" class="text-decoration-none text-dark" target="_blank">
-                        <img src="" title="icon-viber- alt="icon-viber- class="wd-38">
-                        <h3 class="card-title mt-2 primary-text-color">Contact Us</h3>
-                        <p class="card-text">@lang('chat_with_us')</p>
-                    </a>
+        <div class="cmn-sec">
+            <div class="row mt-4">
+                <div class="col-lg-4 col-md-12 col-sm-12 mb-5 text-center">
+                    <div class="card rounded contact-card">
+                        <div class="card-body m-3">
+                            <a href="viber://pa?chatURI=are&context=abcdefg&text=Hello" class="text-decoration-none text-dark" target="_blank">
+                                <img src="" title="icon-viber- alt="icon-viber- class="wd-38">
+                                <h3 class="card-title mt-2 primary-text-color">Contact Us</h3>
+                                <p class="card-text">@lang('chat_with_us')</p>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-12 col-sm-12 mb-5 text-center">
-            <div class="card rounded contact-card">
-                <div class="card-body m-3">
-                    <a href="https://m.me/ivemore/" class="text-decoration-none text-dark" target="_blank">
-                        <img src="" title="icon-facebook-messenger- alt="icon-facebook-messenger- class="wd-38">
-                        <h3 class="card-title mt-2 primary-text-color">Facebook messenger</h3>
-                        <p class="card-text">@lang('chat_with_us')</p>
-                    </a>
+                <div class="col-lg-4 col-md-12 col-sm-12 mb-5 text-center">
+                    <div class="card rounded contact-card">
+                        <div class="card-body m-3">
+                            <a href="https://m.me/ivemore/" class="text-decoration-none text-dark" target="_blank">
+                                <img src="" title="icon-facebook-messenger- alt="icon-facebook-messenger- class="wd-38">
+                                <h3 class="card-title mt-2 primary-text-color">Facebook messenger</h3>
+                                <p class="card-text">@lang('chat_with_us')</p>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-12 col-sm-12 mb-5 text-center">
-            <div class="card rounded contact-card">
-                <div class="card-body m-3">
-                    <a href="https://com.mm/contact/" class="text-decoration-none text-dark" target="_blank">
-                        <img src="" title="icon-hotline- alt="icon-hotline- class="wd-38">
-                        <h3 class="card-title mt-2 primary-text-color">Phone or Email</h3>
-                        <p class="card-text">@lang('we_available')</p>
-                    </a>
+                <div class="col-lg-4 col-md-12 col-sm-12 mb-5 text-center">
+                    <div class="card rounded contact-card">
+                        <div class="card-body m-3">
+                            <a href="https://com.mm/contact/" class="text-decoration-none text-dark" target="_blank">
+                                <img src="" title="icon-hotline- alt="icon-hotline- class="wd-38">
+                                <h3 class="card-title mt-2 primary-text-color">Phone or Email</h3>
+                                <p class="card-text">@lang('we_available')</p>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-</div>
-</div>
 
 @if ($errors->any())
     <div class="alert alert-danger alert-dismissible col-4 ml-auto fixed-bottom">
@@ -92,15 +116,13 @@
             if(this.value){
                 let url = `{{ url('/') }}/ajax/state_division/${this.value}/townships`;
                 fetch(url)
-                    .then(response => response.json())
-                    .then(({townships: data}) => {
-                        $('#township_id').empty();
-                        $('#township_id').append('<option value="" disabled selected>မြို့နယ်ကိုရွေးပါ</option>');
-                        data.map((township) => {
-                            $('#township_id').append(`<option value="${township.id}" disable>${township.name}</option>`);
-                        })
-                    })
-                    .catch(error => console.error(error));
+                .then(response => response.json())
+                .then(data => {
+                    $('#township_id').empty();
+                    $('#township_id').append('<option value="" disabled selected>မြို့နယ်ကိုရွေးပါ</option>');
+                    data.map(({id, name}) => $('#township_id').append(`<option value="${id}" disable>${name}</option>`))
+                })
+                .catch(error => console.error(error));
             }
         });
 

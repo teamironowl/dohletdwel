@@ -10,7 +10,8 @@ class ReportFormService
     {
         return ReportForm::leftJoin('state_divisions', 'state_divisions.id', 'state_division')
         ->leftJoin('townships', 'townships.id', 'township_id')
-        ->select('report_forms.*', 'state_divisions.name as state_division_name', 'townships.name as township_name');
+        ->select('report_forms.*', 'state_divisions.name as state_division_name', 'townships.name as township_name')
+        ->orderBy('created_at', 'desc');
     }
 
     public function ownerUserReport()
