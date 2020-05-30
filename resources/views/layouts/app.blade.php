@@ -88,6 +88,7 @@
         @include('layouts._login')
         @include('layouts._register')
     @endguest
-        @include('layouts._report_from')
+        @include('layouts._report_form')
+        @include('layouts._volunteer_form')
 </body>
 </html>

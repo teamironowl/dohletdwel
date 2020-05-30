@@ -23,6 +23,8 @@ Route::get('/state_or_division/{id}/cases', 'StateDivisionController@index');
 
 Route::resource('/reportForm', 'ReportFormController');
 
+Route::resource('/volunteerForm', 'VolunteerFormController');
+
 Route::group(['prefix' => 'ajax'], function (){
     Route::get('state_division/{id}/townships', 'StateDivisionController@getAjax');
 });

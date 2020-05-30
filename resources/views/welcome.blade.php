@@ -14,7 +14,7 @@
                 <img src="{{ url('/banner.png')}}" class="secondary-background-color rounded-circle" alt="Banner Image" width="200px">
             </div>
             <div class="align-self-center">
-                <div class="d-flex p-4 flex-lg-column flex-md-column flex-sm-row" style="cursor:pointer" onclick="$('#reportForm').modal('show')">  
+                <div class="d-flex p-4 flex-lg-column flex-md-column flex-sm-row" style="cursor:pointer" onclick="$('#volunteerForm').modal('show')">  
                     <img src="{{ url('/banner.png')}}" class="secondary-background-color align-self-center rounded-circle" alt="Banner Image" width="100px">
                     <button class="btn primary-text-color btn-lg mt-4">အကူအညီပေးရန်</button>
                 </div>
@@ -128,6 +128,10 @@
 
         @if(session()->has('action_message') && session()->get('action_message') == 'openReportForm')
             $('#reportForm').modal('show');
+        @endif
+
+        @if(session()->has('action_message') && session()->get('action_message') == 'openVolunteerForm')
+            $('#volunteerForm').modal('show');
         @endif
 
         var action_message = /[?&]action_message(=([^&#]*)|&|#|$)/.exec(window.location.href);
