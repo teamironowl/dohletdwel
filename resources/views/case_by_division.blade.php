@@ -24,6 +24,8 @@
             </div>
         </div>
         @endforeach
-        <div class="row ml-auto">{{ isset($cases) ? $cases->links() : ''}}</div>
+        <div class="row col-12">
+            <div class="ml-auto"> {{ $cases ? $cases->links() : '' }} </div>
+        </div>
     </div>
 @stop
