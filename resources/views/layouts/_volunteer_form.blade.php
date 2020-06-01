@@ -63,7 +63,7 @@
 
                             <div class="col-md-8">
                                 <div class="input-group">
-                                    <select id="state_division_vlt_1" name="state_division_vlt_1" class="custom-select">
+                                    <select id="state_division_vlt_one" name="state_division_vlt_one" class="custom-select">
                                         <option value="" selected disable>ပြည်နယ်/ တိုင်းရွေးပါ</option>
                                         @foreach($all_divisions ?? [] as $division)
                                         <option value="{{$division->id}}">{{$division->name}}</option>
@@ -74,7 +74,7 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                    <select name="township_id_vlt_1" id="township_id_vlt_1" class="custom-select @error('township_id') is-invalid @enderror">
+                                    <select name="township_id_vlt_one" id="township_id_vlt_one" class="custom-select @error('township_id') is-invalid @enderror">
                                         <option value="" selected disable>မြို့နယ်ကိုရွေးပါ</option>
                                     </select>
                                     @error('township_id')
@@ -98,7 +98,7 @@
 
                             <div class="col-md-8">
                                 <div class="input-group">
-                                    <select id="state_division_vlt_2" name="state_division_vlt_2" class="custom-select">
+                                    <select id="state_division_vlt_two" name="state_division_vlt_two" class="custom-select">
                                         <option value="" selected disable>ပြည်နယ်/ တိုင်းရွေးပါ</option>
                                         @foreach($all_divisions ?? [] as $division)
                                         <option value="{{$division->id}}">{{$division->name}}</option>
@@ -109,7 +109,7 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                    <select name="township_id_vlt_2" id="township_id_vlt_2" class="custom-select @error('township_id') is-invalid @enderror">
+                                    <select name="township_id_vlt_two" id="township_id_vlt_two" class="custom-select @error('township_id') is-invalid @enderror">
                                         <option value="" selected disable>မြို့နယ်ကိုရွေးပါ</option>
                                     </select>
                                     @error('township_id')

@@ -19,7 +19,11 @@ class CreateVolunteerFormsTable extends Migration
             $table->integer('volunteer_age');
             $table->string('volunteer_gender');
             $table->string('volunteer_phone')->nullable();
+            $table->string('state_division_vlt_one')->nullable();
+            $table->string('township_id_vlt_one')->nullable();
             $table->string('volunteer_address')->nullable();
+            $table->string('state_division_vlt_two')->nullable();
+            $table->string('township_id_vlt_two')->nullable();
             $table->string('prefer_location')->nullable();
             $table->timestamps();
         });

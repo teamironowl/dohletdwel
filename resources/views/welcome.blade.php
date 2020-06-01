@@ -146,29 +146,29 @@
             }
         });
 
-        $('#state_division_vlt_1').on('change', function () {
+        $('#state_division_vlt_one').on('change', function () {
             if(this.value){
                 let url = `{{ url('/') }}/ajax/state_division/${this.value}/townships`;
                 fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                    $('#township_id_vlt_1').empty();
-                    $('#township_id_vlt_1').append('<option value="" disabled selected>မြို့နယ်ကိုရွေးပါ</option>');
-                    data.map(({id, name}) => $('#township_id_vlt_1').append(`<option value="${id}" disable>${name}</option>`))
+                    $('#township_id_vlt_one').empty();
+                    $('#township_id_vlt_one').append('<option value="" disabled selected>မြို့နယ်ကိုရွေးပါ</option>');
+                    data.map(({id, name}) => $('#township_id_vlt_one').append(`<option value="${id}" disable>${name}</option>`))
                 })
                 .catch(error => console.error(error));
             }
         });
 
-        $('#state_division_vlt_2').on('change', function () {
+        $('#state_division_vlt_two').on('change', function () {
             if(this.value){
                 let url = `{{ url('/') }}/ajax/state_division/${this.value}/townships`;
                 fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                    $('#township_id_vlt_2').empty();
-                    $('#township_id_vlt_2').append('<option value="" disabled selected>မြို့နယ်ကိုရွေးပါ</option>');
-                    data.map(({id, name}) => $('#township_id_vlt_2').append(`<option value="${id}" disable>${name}</option>`))
+                    $('#township_id_vlt_two').empty();
+                    $('#township_id_vlt_two').append('<option value="" disabled selected>မြို့နယ်ကိုရွေးပါ</option>');
+                    data.map(({id, name}) => $('#township_id_vlt_two').append(`<option value="${id}" disable>${name}</option>`))
                 })
                 .catch(error => console.error(error));
             }
