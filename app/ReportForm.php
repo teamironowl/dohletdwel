@@ -12,4 +12,9 @@ class ReportForm extends Model
     static $STATUS_CLOSED   = 4;
     
     protected $guarded = [];
+
+    public function medias()
+    {
+        return $this->hasMany(File::class);
+    }
 }

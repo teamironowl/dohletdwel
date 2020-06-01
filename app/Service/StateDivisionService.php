@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\StateDivision;
+use App\ReportForm;
 use DB;
 
 class StateDivisionService
@@ -14,8 +15,9 @@ class StateDivisionService
 
     public function withTotalCases()
     {
-        $stateWithTotalCase = StateDivision::join('report_forms', 'report_forms.state_division', 'state_divisions.id')
-        ->select('state_divisions.id', 'state_divisions.name', DB::raw('count(report_forms.id) as cases'))
+        $stateWithTotalCase = StateDivision::with('medias:file_path,files.created_at')
+        ->join('report_forms', 'report_forms.state_division', 'state_divisions.id')
+        ->select('report_forms.id', 'state_divisions.name', DB::raw('count(report_forms.id) as cases'), 'state_division')
         ->where('report_forms.status', config()->get('constants.cases.STATUS_APPROVE'))
         ->groupBy('name')
         ->orderBy('cases', 'desc')
@@ -26,12 +28,12 @@ class StateDivisionService
 
     public function getCasesByDivisionId($id)
     {
-        $stateWithTotalCase = StateDivision::join('report_forms', 'report_forms.state_division', 'state_divisions.id')
-        ->join('townships', 'townships.id', 'report_forms.township_id')
+        $stateWithTotalCase =  ReportForm::with('medias')
+        ->leftJoin('state_divisions', 'state_divisions.id', 'report_forms.state_division')
+        ->leftJoin('townships', 'townships.id', 'report_forms.township_id')
         ->select('report_forms.*', 'state_divisions.name as division_name', 'townships.name as township_name')
         ->where('report_forms.status', config()->get('constants.cases.STATUS_APPROVE'))
-        ->where('state_divisions.id', $id)
-        ->paginate(5);
+        ->where('report_forms.state_division', $id)->paginate(5);
 
         return $stateWithTotalCase;
     }

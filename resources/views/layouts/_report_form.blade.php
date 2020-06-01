@@ -4,7 +4,7 @@
         <div class="modal-content card">
             <div class="modal-header cart-header"> <b>လိုအပ်သည့်နေရာများကူညီပေးနိုင်ရန်</b> </div>
                 <div class="modal-body card-body">
-                    <form method="POST" action="{{ route('reportForm.store') }}">
+                    <form method="POST" action="{{ route('reportForm.store') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
                             <label for="state_division" class="col-md-4 col-form-label text-md-right">ပြည်နယ်/ တိုင်း</label>
@@ -51,10 +51,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="description" class="col-md-4 col-form-label text-md-right">ဖြည့်စွက်ချက်</label>
+                            <label for="description" class="col-md-4 col-form-label text-md-right">လိုအပ်သည့်အကြာင်းအရင်း</label>
 
                             <div class="col-md-8">
-                                <textarea name="description" placeholder="အကူအညီလိုအပ်သည့် အသေးစိပ်" id="description" class="form-control"></textarea>
+                                <textarea name="description" placeholder="ဘာကြောင့်လိုအပ်ပါလဲ" id="description" class="form-control"></textarea>
 
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
@@ -65,10 +65,28 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="affect_people" class="col-md-4 col-form-label text-md-right">ဘေးသင့်လူဦးရေ</label>
+                            <label for="affect_people" class="col-md-4 col-form-label text-md-right">လိုအပ်သည့်လူဦးရေ</label>
 
                             <div class="col-md-8">
                                 <input id="affect_people" type="number" placeholder="အရေအတွက်ဖော်ပြပါ။" class="form-control @error('affect_people') is-invalid @enderror" name="affect_people" value="{{ old('affect_people') }}" required>
+
+                                @error('affect_people')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="affect_people" class="col-md-4 col-form-label text-md-right">မှတ်တမ်းဓာတ်ပုံ/ ဗွီတီယိုများ</label>
+
+                            <div class="col-md-8">
+                                <div class="custom-file mb-2">
+                                    <input type="file" name="files[]" class="custom-file-input" id="files" multiple accept=".jpg,.jpeg.,.gif,.png,.mov,.mp4">
+                                    <label class="custom-file-label" for="files">Choose file</label>
+                                </div>
+                                <div id="image_preview"> </div>
 
                                 @error('affect_people')
                                     <span class="invalid-feedback" role="alert">

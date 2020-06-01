@@ -16,7 +16,7 @@
             <div class="align-self-center">
                 <div class="d-flex p-4 flex-lg-column flex-md-column flex-sm-row" style="cursor:pointer" onclick="$('#volunteerForm').modal('show')">  
                     <img src="{{ url('/banner.png')}}" class="secondary-background-color align-self-center rounded-circle" alt="Banner Image" width="100px">
-                    <button class="btn primary-text-color btn-lg mt-4">Volunteer အဆိုပြုရန်</button>
+                    <button class="btn primary-text-color btn-lg mt-4">Volunteer လျောက်ထားရန်</button>
                 </div>
             </div>
         </div>
@@ -39,10 +39,26 @@
                         <div class="col-lg-3 col-md-3 col-sm-12 mb-5 text-center">
                             <div class="card rounded contact-card">
                                 <div class="card-header secondary-background-color text-white"><h5>{{$division->name}}</h5></div>
-                                <div class="card-body m-3" style="background: url({{ url('logo.jpg')}}) no-repeat">
-                                    <div class="ml-5 pl-5">
-                                        <p class="ml-5"><b>{{ $division->cases}}</b> Case</p>
-                                        <a href="{{ url('/state_or_division').'/'.$division->id.'/cases'}}" class="btn btn-sm secondary-background-color text-white ml-5">အသေးစိပ်</a>
+                                <div class="card-body m-3">
+                                    <div class="row">
+                                        <div class="float-lefts col-8">
+                                            @forelse($division->medias->sortByDesc('created_at')->take(4) as $media)
+                                                @if(count($division->medias) == 1)
+                                                <img src="{{$media->file_path}}" alt="..." width="120" height="120">
+                                                @elseif(count($division->medias) == 2)
+                                                <img src="{{$media->file_path}}" alt="..." width="60" height="58">
+                                                <img src="{{url('logo.jpg')}}" alt="..." width="60" height="58">
+                                                @else
+                                                <img src="{{$media->file_path}}" alt="..." width="60" height="58">
+                                                @endif
+                                            @empty
+                                                <img src="{{url('logo.jpg')}}" alt="...">
+                                            @endforelse
+                                        </div>
+                                        <div>
+                                            <p><b>{{ $division->cases}}</b> Case</p>
+                                            <a href="{{ url('/state_or_division').'/'.$division->state_division.'/cases'}}" class="btn btn-sm secondary-background-color text-white">အသေးစိပ်</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -110,6 +126,8 @@
     </div>
 @endif
 @endsection
+
+@section('scripts')
 <script>
     window.onload = function () {
         $('#state_division').on('change', function () {
@@ -148,4 +166,33 @@
             });
         @endif
     }
+
+    const files_dom  = document.getElementById('files');
+    const image_preview = document.getElementById('image_preview');
+
+    files_dom.addEventListener('change', ev => {
+        ev.preventDefault();
+        image_preview.innerHTML = ''; // Clear Preview
+        const files = ev.target.files;
+        if (!files || !files[0]) return alert('File upload not supported');
+        [...files].map( readFile );
+    });
+
+    const readFile = file => {
+        const reader = new FileReader();
+        if (file.type.match('image')){
+            reader.onload = _ => image_preview.insertAdjacentHTML('beforeend', `<img src="${reader.result}" width="57" class="img-fluid img-thumbnail" alt="..."> `)
+            reader.readAsDataURL(file);
+            return;  
+        }
+        reader.onload = _ => image_preview.insertAdjacentHTML('beforeend', `<video src="${reader.result}" width="57" class="img-fluid img-thumbnail" alt="..."></video> `)
+        reader.readAsDataURL(file);
+    }
+
+    function thumbnail(){
+        var canvas = document.getElementById('canvas');
+        var video = document.getElementById('video');
+        canvas.getContext('2d').drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+    }
 </script>
+@stop

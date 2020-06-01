@@ -93,5 +93,7 @@
     @endguest
         @include('layouts._report_form')
         @include('layouts._volunteer_form')
+        
+    @yield('scripts')
 </body>
 </html>

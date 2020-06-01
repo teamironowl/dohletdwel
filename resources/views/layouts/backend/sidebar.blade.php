@@ -3,7 +3,7 @@
         <!-- <botton class="toggle" class="btn btn-primary" onclick="$('.sidebar').toggleClass('open')">
             &larr;
         </botton> -->
-        <a class="navbar-brand" href="{{ url('/home') }}">
+        <a class="navbar-brand" href="{{ url('/') }}">
             <img src="{{ url('/logo.jpg')}}" alt="Logo" width="50px">
         </a>
         <span>Admin Dashboard</span>
