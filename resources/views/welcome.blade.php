@@ -32,7 +32,7 @@
             </ol>
             
             <div class="carousel-inner">
-                @foreach($divisions->chunk(4) ?? [] as $count => $division_cats)
+                @forelse($divisions->chunk(4) ?? [] as $count => $division_cats)
                 <div class="carousel-item {{ $count == 0 ? 'active' : '' }}">
                     <div class="row mt-12">
                         @foreach($division_cats ?? [] as $division)
@@ -66,7 +66,9 @@
                         @endforeach
                     </div>
                 </div>
-                @endforeach
+                @empty
+                <h3 class="text-center mb-4">ဒေတာမရှိသေးပါ။</h3>
+                @endforelse
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -86,7 +88,7 @@
                     <div class="card rounded contact-card">
                         <div class="card-body m-3">
                             <a href="viber://pa?chatURI=are&context=abcdefg&text=Hello" class="text-decoration-none text-dark" target="_blank">
-                                <img src="" title="icon-viber- alt="icon-viber- class="wd-38">
+                                <img src="/viber.svg" title="icon-viber" alt="icon-viber" width="60px">
                                 <h3 class="card-title mt-2 primary-text-color">Contact Us</h3>
                                 <p class="card-text">@lang('chat_with_us')</p>
                             </a>
@@ -97,7 +99,7 @@
                     <div class="card rounded contact-card">
                         <div class="card-body m-3">
                             <a href="https://m.me/ivemore/" class="text-decoration-none text-dark" target="_blank">
-                                <img src="" title="icon-facebook-messenger- alt="icon-facebook-messenger- class="wd-38">
+                                <img src="/messenger.svg" title="icon-facebook-messenger" alt="icon-facebook-messenger" width="60px">
                                 <h3 class="card-title mt-2 primary-text-color">Facebook messenger</h3>
                                 <p class="card-text">@lang('chat_with_us')</p>
                             </a>
@@ -108,7 +110,7 @@
                     <div class="card rounded contact-card">
                         <div class="card-body m-3">
                             <a href="https://com.mm/contact/" class="text-decoration-none text-dark" target="_blank">
-                                <img src="" title="icon-hotline- alt="icon-hotline- class="wd-38">
+                                <img src="/contact.svg" title="icon-hotline" alt="icon-hotline" width="60px">
                                 <h3 class="card-title mt-2 primary-text-color">Phone or Email</h3>
                                 <p class="card-text">@lang('we_available')</p>
                             </a>
