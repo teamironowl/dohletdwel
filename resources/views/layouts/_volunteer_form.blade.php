@@ -2,7 +2,7 @@
 <div class="modal fade shadow" id="volunteerForm" tabindex="-1" role="dialog" aria-labelledby="volunteerFormLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content card">
-            <div class="modal-header cart-header"> <b>Volunteer အဆိုပြုရန်</b> </div>
+            <div class="modal-header cart-header"> <b>Volunteer လျောက်ထားရန်</b> </div>
                 <div class="modal-body card-body">
                     <form method="POST" action="{{ route('volunteerForm.store') }}">
                         @csrf
@@ -62,7 +62,28 @@
                             <label for="volunteer_address" class="col-md-4 col-form-label text-md-right">နေရပ်လိပ်စာ</label>
 
                             <div class="col-md-8">
-                                <textarea name="volunteer_address" id="volunteer_address" class="form-control"></textarea>
+                                <div class="input-group">
+                                    <select id="state_division_vlt_1" name="state_division_vlt_1" class="custom-select">
+                                        <option value="" selected disable>ပြည်နယ်/ တိုင်းရွေးပါ</option>
+                                        @foreach($all_divisions ?? [] as $division)
+                                        <option value="{{$division->id}}">{{$division->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('state_division')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                    <select name="township_id_vlt_1" id="township_id_vlt_1" class="custom-select @error('township_id') is-invalid @enderror">
+                                        <option value="" selected disable>မြို့နယ်ကိုရွေးပါ</option>
+                                    </select>
+                                    @error('township_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <textarea name="volunteer_address" id="volunteer_address" class="form-control mt-1"></textarea>
 
                                 @error('volunteer_address')
                                     <span class="invalid-feedback" role="alert">
@@ -73,10 +94,31 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="prefer_location" class="col-md-4 col-form-label text-md-right">သွားရောက်ကူညီလိုသည့် နေရာ</label>
+                            <label for="prefer_location" class="col-md-4 col-form-label text-md-right">သွားရောက်ကူညီ <br> လိုသည့်နေရာ</label>
 
                             <div class="col-md-8">
-                                <textarea name="prefer_location" id="prefer_location" class="form-control"></textarea>
+                                <div class="input-group">
+                                    <select id="state_division_vlt_2" name="state_division_vlt_2" class="custom-select">
+                                        <option value="" selected disable>ပြည်နယ်/ တိုင်းရွေးပါ</option>
+                                        @foreach($all_divisions ?? [] as $division)
+                                        <option value="{{$division->id}}">{{$division->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('state_division')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                    <select name="township_id_vlt_2" id="township_id_vlt_2" class="custom-select @error('township_id') is-invalid @enderror">
+                                        <option value="" selected disable>မြို့နယ်ကိုရွေးပါ</option>
+                                    </select>
+                                    @error('township_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <textarea name="prefer_location" id="prefer_location" class="form-control mt-1"></textarea>
 
                                 @error('prefer_location')
                                     <span class="invalid-feedback" role="alert">
